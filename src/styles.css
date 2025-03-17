@@ -16,36 +16,42 @@
 @keyframes flipTitle {
  
     from {
-transform:rotateX(50deg);
- }
-
- to{
-transform: rotateX(0deg);
- }
+        transform: rotateX(50deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
 
 }
 
-.containerInput{
-    background-color: rgba(70, 76, 86);
+.containerInput {
+    background-color: rgba(70, 76, 86, 0.9); /* Ajustei a opacidade */
     padding: 15px;
-    margin:34px 0;
+    margin: 34px 0;
     display: flex;
     border-radius: 8px;
-    box-shadow:1px 3px 8px rgba (0, 0, 0, 0.5);
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
 }
 
 .containerInput input {
     background-color: transparent;
     border: 0;
     font-size: 20px;
-    color:#FFF;
-    outline:none;
-    margin-right:8px;
+    color: #FFF;
+    outline: none;
+    margin-right: 8px;
+    width: 250px;
+    transition: 0.3s ease-in-out;
 }
 
-.containerInput input::placeholder {
-    color:#f1f1f1;
+.containerInput input:focus {
+    width: 300px; /* Expande o campo ao digitar */
+    border-bottom: 2px solid #00d9ff;
 }
+
 .buttonsearch {
     background-color: transparent;
     border: 0;
@@ -53,22 +59,34 @@ transform: rotateX(0deg);
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.5s;
+    transition: transform 0.3s, background-color 0.3s;
+    padding: 10px;
+    border-radius: 50%;
 }
 
-.buttonsearch:hover{
+.buttonsearch:hover {
     transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.main{
+
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #FFF;
+    background-color: #d9d9d9;
     width: 500px;
     border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
 }
+
+.main:hover {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
 .main h2{
     margin: 16px 0;
     font-size: 39px;
@@ -78,14 +96,25 @@ transform: rotateX(0deg);
     font-weight: bold;
 }
 
-@media (max-width:620px){
-    .title{
-        font-size: 60px;
+@media (max-width: 620px) {
+    .title {
+        font-size: 50px;
+        text-align: center;
     }
-    .main h2{font-size: 28px;
+    .containerInput {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
-    .main{
-        width: 80%;
-        min-height: 250px;
+    .containerInput input {
+        width: 90%;
+    }
+    .buttonsearch {
+        width: 50px;
+        height: 50px;
+    }
+    .main {
+        width: 90%;
+        min-height: auto;
     }
 }
